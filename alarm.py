@@ -21,11 +21,15 @@ def packetcallback(packet):
       count = count + 1
       print("ALERT #%i: Xmas scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
       
-    packet_data_raw = str(packet)      
-    if "nikto" in packet_data_raw.lower(): # detects a Nikto scan
+    raw_data = str(packet)      
+    if "nikto" in raw_data.lower(): # detects a Nikto scan
       count = count + 1
       print("ALERT #%i: Nikto scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
     
+    if packet[TCP].sport or packet[TCP].dport == 21: #DTP
+      if "USER" and "PASS" in raw_data:
+          count = count + 1
+          print("USER AND PASS FOUND")
   except:
     pass
 
