@@ -3,12 +3,16 @@
 from scapy.all import *
 import argparse
 
+count = 0
+
 def packetcallback(packet):
   try:
-    # The following is an example of Scapy detecting HTTP traffic
-    # Please remove this case in your actual lab implementation so it doesn't pollute the alerts
-    if packet[TCP].dport == 80:
-      print("HTTP (web) traffic detected!")
+    global count
+    
+    if packet[TCP].flags == "": #detects a null scan
+        count = count + 1
+        print("ALERT #%i: NULL scan is detected from %s (%s)" % (count, packet[IP].src, packet.sport))
+        
   except:
     pass
 
