@@ -9,10 +9,23 @@ def packetcallback(packet):
   try:
     global count
     
-    if packet[TCP].flags == "": #detects a null scan
-        count = count + 1
-        print("ALERT #%i: NULL scan is detected from %s (%s)" % (count, packet[IP].src, packet.sport))
-        
+    if packet[TCP].flags == "": #detects a NULL scan
+      count = count + 1
+      print("ALERT #%i: NULL scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
+    
+    if packet[TCP].flags == "F": #detects a FIN scan
+      count = count + 1
+      print("ALERT #%i: FIN scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
+      
+    if packet[TCP].flags == "PFU": #detects a Xmas scan
+      count = count + 1
+      print("ALERT #%i: Xmas scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
+      
+    packet_data_raw = str(packet)      
+    if "nikto" in packet_data_raw.lower(): # detects a Nikto scan
+      count = count + 1
+      print("ALERT #%i: Nikto scan is detected from %s (%s)!" % (count, packet[IP].src, packet.sport))
+    
   except:
     pass
 
