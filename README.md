@@ -8,3 +8,10 @@ This program is capable of determining if the packets received consists of the f
   * Xmas scans (found with TCP flag of "PFU")
   * Nikto scans (found within the payload when "nikto" appears)
   
+Alongside determining scans, this program is capable of other following:
+  * Retrieving usernames and password sent in-the-clear via:
+      * HTTP Basic Authentication (found in port 80)
+      * FTP (found in port 21)
+      * IMAP (found in port 143)
+  * Searching for Server Message Block (SMB) Protocol (found under port 443)
+  
