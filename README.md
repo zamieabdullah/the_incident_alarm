@@ -1,6 +1,5 @@
 # the_incident_alarm
-A script that notifies the user of particular incidents from either a live 
-stream of network packets or from a given PCAP file.
+A script that notifies the user of particular incidents from either a live stream of network packets or from a given PCAP file.
 
 # What is this program capable of?
 This program is capable of determining if the packets received consists of the following scans:
