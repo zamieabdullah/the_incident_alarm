@@ -1,4 +1,11 @@
-#!/usr/bin/python3
+# alarm.py
+# Starter code given by Ming Y. Chow
+# Edited and completed by Zamie Abdullah
+# Date of last edit: 03/01/2020
+# 
+# Program: 
+# A script that notifies the user of particular incidents from either a live 
+# stream of network packets or from a given PCAP file.
 
 from scapy.all import *
 import base64
